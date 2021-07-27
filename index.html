@@ -102,19 +102,37 @@
 <li><p>Select and download a well-prepared model</p>
 <p><a target="_blank" rel="noopener" href="https://huaji8.top/post/live2d-plugin-2.0/">Preview</a><br><a target="_blank" rel="noopener" href="https://github.com/xiazeyu/live2d-widget-models">Prepared packages</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># npm install live2d-widget-model-&#123;package_name&#125;</span></span><br><span class="line">npm install live2d-widget-model-shizuku</span><br></pre></td></tr></table></figure></li>
-<li><p><em><strong>IMPORTANT</strong></em> Solution to EISDIR: Fix hexo-help-live2d.</p>
+<li><p>Set Model Asset Directory</p>
+<ol>
+<li>create a folder under root path of blog: ./live2d_models</li>
+<li>create a folder: ./live2d_models/{model_name}</li>
+<li>copy files from ./node_modules/live2d-widget-model-{model_name}<ul>
+<li>/exp</li>
+<li>/moc</li>
+<li>/mtn</li>
+<li>/snd</li>
+<li>*.model.json</li>
+<li>*.physics.json</li>
+<li>*.pose.json </li>
+<li> <em>[P.S.] Some DIRs/Files are optional</em></li>
+</ul>
+</li>
+<li>paste them to ./live2d_models/{model_name}</li>
+</ol>
+</li>
+<li><p><em><strong>IMPORTANT</strong></em> Solution to EISDIR: Fix hexo-help-live2d</p>
 <p>For unknown reasons, downloading live2d packages might alter some configurations or settings of hexo-help-live2d. Error EISDIR(short for Error is Dir) would launch. Plugin hexo-help-live2d load failed.</p>
-<p>One solution( which works well for me) is re-install hexo-helper-live2d. Don’t worry, re-installation takes less time.</p>
+<p>One solution( which works well for me) is to reinstall hexo-helper-live2d. Don’t worry, reinstallation takes less time.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add hexo-helper-live2d</span><br></pre></td></tr></table></figure></li>
 <li><p>Configuration</p>
-<p>Add these to _config.yml<br><a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d">Read more</a></p>
+<p>Add these to _config.yml<br><a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d">Read more</a><br><a target="_blank" rel="noopener" href="https://l2dwidget.js.org/docs/class/src/index.js~L2Dwidget.html#instance-method-init">Detailed Setting</a></p>
 </li>
 </ol>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Live2D </span></span><br><span class="line"><span class="comment">## https://github.com/EYHN/hexo-helper-live2d</span></span><br><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">scriptFrom:</span> <span class="string">local</span> <span class="comment"># 默认</span></span><br><span class="line">  <span class="attr">pluginRootPath:</span> <span class="string">live2dw/</span> <span class="comment"># 插件在站点上的根目录(相对路径)</span></span><br><span class="line">  <span class="attr">pluginJsPath:</span> <span class="string">lib/</span> <span class="comment"># 脚本文件相对与插件根目录路径</span></span><br><span class="line">  <span class="attr">pluginModelPath:</span> <span class="string">assets/</span> <span class="comment"># 模型文件相对与插件根目录路径</span></span><br><span class="line">  <span class="comment"># scriptFrom: jsdelivr # jsdelivr CDN</span></span><br><span class="line">  <span class="comment"># scriptFrom: unpkg # unpkg CDN</span></span><br><span class="line">  <span class="comment"># scriptFrom: https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js # 你的自定义 url</span></span><br><span class="line">  <span class="attr">tagMode:</span> <span class="literal">false</span> <span class="comment"># 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中</span></span><br><span class="line">  <span class="attr">debug:</span> <span class="literal">false</span> <span class="comment"># 调试, 是否在控制台输出日志</span></span><br><span class="line">  <span class="attr">model:</span></span><br><span class="line">    <span class="comment"># use: live2d-widget-model-wanko # npm-module package name</span></span><br><span class="line">    <span class="comment"># use: wanko # 博客根目录/live2d_models/ 下的目录名</span></span><br><span class="line">    <span class="comment"># use: ./wives/wanko # 相对于博客根目录的路径</span></span><br><span class="line">    <span class="comment"># use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # 你的自定义 url</span></span><br><span class="line">    <span class="attr">display:</span>    <span class="comment"># 模型展示的位置设置</span></span><br><span class="line">        <span class="attr">position:</span> <span class="string">right</span>     <span class="comment"># 方位</span></span><br><span class="line">        <span class="attr">width:</span> <span class="number">150</span>          <span class="comment"># 宽度</span></span><br><span class="line">        <span class="attr">height:</span> <span class="number">300</span>         <span class="comment"># 高度</span></span><br><span class="line">    <span class="attr">mobile:</span></span><br><span class="line">        <span class="attr">show:</span> <span class="literal">true</span>   <span class="comment"># 在移动设备上是否开启live2d</span></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/26/Add-L2D-2-Blog/" data-id="ckrkolfq20000l0uk2qisdwcp" data-title="Add_L2D_2_Blog" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/07/26/Add-L2D-2-Blog/" data-id="ckrknzbza0003q8ukclo49dut" data-title="Add_L2D_2_Blog" class="article-share-link">Share</a>
       
       
       
@@ -471,5 +489,5 @@
 
 
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"jsonPath":"/live2dw/assets/shizuku.model.json"},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"dialog":{"enable":false,"hitokoto":false},"react":{"opacity":0.7},"jsonPath":"/live2dw/assets/shizuku.model.json"},"log":false});</script></body>
 </html>
